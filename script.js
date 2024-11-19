@@ -45,7 +45,7 @@ document.getElementById('generateInvoice').addEventListener('click', () => {
     doc.setFont("helvetica", "normal");
 
     // Add company address
-    doc.text("WEST STREET, POTTAL PUTHUR, SANGANAPURAM - 627114", 105, 30, { align: "center" });
+    doc.text("NORTH STREET, POTTAL PUTHUR, SANGANAPURAM - 627114", 105, 30, { align: "center" });
 
     // Add customer details
     doc.setFontSize(14);
