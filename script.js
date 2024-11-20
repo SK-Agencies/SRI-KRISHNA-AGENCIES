@@ -23,10 +23,12 @@ document.getElementById('generateInvoice').addEventListener('click', () => {
     const invoiceDate = document.getElementById('invoiceDate').value || new Date().toISOString().split('T')[0]; // Default to today's date if empty
     const rows = Array.from(document.querySelectorAll('#productTable tbody tr')).map(row => ({
         description: row.querySelector('.description').value,
-        quantity: row.querySelector('.quantity').value,
-        price: row.querySelector('.price').value,
-        total: row.querySelector('.total').textContent
+        quantity: parseFloat(row.querySelector('.quantity').value) || 0,
+        price: parseFloat(row.querySelector('.price').value) || 0,
+        total: parseFloat(row.querySelector('.total').textContent) || 0
     }));
+
+    const grandTotal = rows.reduce((sum, row) => sum + row.total, 0); // Calculate grand total
 
     const { jsPDF } = window.jspdf;
 
@@ -54,9 +56,20 @@ document.getElementById('generateInvoice').addEventListener('click', () => {
     // Add invoice date
     doc.text(`Invoice Date: ${invoiceDate}`, 10, 60);
 
-    // Add table header and product details using autoTable
+    // Prepare table data with the grand total row
     const tableData = rows.map(row => [
-        row.description, row.quantity, row.price, row.total
+        row.description, 
+        row.quantity, 
+        `${row.price.toFixed(2)}`, 
+        `${row.total.toFixed(2)}`
+    ]);
+
+    // Add grand total as a final row
+    tableData.push([
+        "", // Empty for Description column
+        "", // Empty for Quantity column
+        "Grand Total", // Label in Price column
+        `RS: ${grandTotal.toFixed(2)}` // Value in Total column
     ]);
 
     // Define columns for the table
@@ -68,8 +81,23 @@ document.getElementById('generateInvoice').addEventListener('click', () => {
     ];
 
     // Use jsPDF AutoTable to add the table to the PDF
-    doc.autoTable(columns, tableData, { startY: 70 });
+    doc.autoTable(columns, tableData, {
+        startY: 70,
+        margin: { right: 10 },
+        theme: 'grid',
+        bodyStyles: {
+            textColor: [0, 0, 0], // Black text for body
+        },
+        didParseCell: (data) => {
+            if (data.row.index === tableData.length - 1) { // Check if it's the last row (Grand Total)
+                data.cell.styles.fontStyle = 'bold';
+                if (data.column.index === 3) { // Grand Total value column
+                    data.cell.styles.textColor = [0, 128, 0]; // Green color for total amount
+                }
+            }
+        }
+    });
 
     // Save as PDF
-    doc.save("invoice.pdf");
+    doc.save(`${customerName}`+'_bill.pdf');
 });
