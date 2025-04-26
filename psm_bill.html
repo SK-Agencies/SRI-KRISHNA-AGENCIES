@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Padman Srivari Minerals — Editable Bill</title>
+
+  <!-- exact header fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?
+      family=IM+Fell+English+SC:wght@400;700
+      &family=Libre+Baskerville:wght@400;700
+      &display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+      color: #000;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .topnav {
+    overflow: hidden;
+    background-color: #5c6b62;
+    border-radius: 25px;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #fffb7b;
+    color: black;
+    border-radius: 25px;
+  }
+  
+  .topnav a.active {
+    background-color: #0080ff;
+    color: white;
+    border-radius: 25px;
+  }
+
+    .bill {
+      width: 800px;    /* match your scan width */
+      margin: auto;
+    }
+
+    /* header */
+    .header-title {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .header-sub {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .header-divider,
+    .footer-divider {
+      border-top: 1px dashed #000;
+      margin: 8px 0 20px;
+    }
+
+    /* two-column table */
+    .details {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    .details td {
+      vertical-align: top;
+      padding: 2px 8px;
+    }
+    .details .left  { width: 60%; text-align: left; }
+    .details .right { width: 40%; text-align: right; }
+
+    /* bold weights */
+    .details b {
+      font-weight: bold;
+    }
+
+    /* only gross/tare datetime fields */
+    #grossDateTime,
+#tareDateTime {
+  margin-right: 180px;       
+}
+
+    /* inputs styled as plain text */
+    input.bill-input {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 0;
+      margin: 0;
+    }
+    input.bill-input.small  { width:  60px;  }
+    input.bill-input.medium { width: 210px; }
+    input.bill-input.large  { width: 200px; }
+    input[readonly] {
+      color: #000;
+    }
+
+    .signatory {
+      text-align: right;
+      padding-right: 120px;
+      font-size: 16px;
+      margin-top: 40px;
+    }
+
+    #downloadPdfBtn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+    }
+    #downloadPdfBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="bill.html">SKA-BILL</a>
+        <a href="as_bill.html">AS-BILL</a>
+        <a class="active" href="psm_bill.html">PADMAN-BILL</a>
+    </div>
+
+  <div class="bill" id="billContent">
+
+    <!-- HEADER -->
+    <div class="header-title">PADMAN SRIVARI MINERALS</div>
+    <div class="header-sub">
+      IRUKKANDURAI,PART II VILLAGE<br>
+      RATHAPURAM TALUK , , , TIRUNELVELI DIST , Ph :
+    </div>
+    <div class="header-divider"></div>
+
+    <!-- DETAILS GRID -->
+    <table class="details">
+      <tr>
+        <td class="left">
+          Ticket No &nbsp;&nbsp;&nbsp;:- 
+          <input type="text" id="ticketNo" class="bill-input small" value="3833">
+        </td>
+        <td class="right">
+          Date &nbsp;&nbsp;:- 
+          <input type="text" id="date" class="bill-input medium" value="26-04-2025">
+        </td>
+      </tr>
+      <tr>
+        <td class="left">
+          Vehicle No &nbsp;&nbsp;:- 
+          <input type="text" id="vehicleNo" class="bill-input medium" value="TN74L2927">
+        </td>
+        <td class="right">
+          Time &nbsp;&nbsp;:- 
+          <input type="text" id="time" class="bill-input medium" value="10:49:50 AM">
+        </td>
+      </tr>
+      <tr>
+        <td class="left">
+          Material &nbsp;&nbsp;&nbsp;&nbsp;:- 
+          <input type="text" id="material" class="bill-input medium" value="P -SAND">
+        </td>
+        <td class="right">
+        Amount :- 
+          <input type="text" id="amount" class="bill-input medium" value="0">
+        </td>
+      </tr>
+      <tr>
+        <td class="left">
+          Customer &nbsp;&nbsp;&nbsp;&nbsp;:- 
+          <input type="text" id="customer" class="bill-input medium" value="MAYANDI">
+        </td>
+        <td class="right"></td>
+      </tr>
+      <tr>
+        <td class="left">
+            Gross Weight :- 
+            <input type="number" id="grossWeight" class="bill-input small" value="7260">-Kg
+          </td>
+          <td class="right">
+            <input type="text" id="grossDateTime" class="bill-input medium"
+                   value="26-04-2025-10:49:50 AM">
+          </td>
+        </tr>
+        <tr>
+          <td class="left">
+            Tare Weight &nbsp;:- 
+            <input type="number" id="tareWeight" class="bill-input small" value="3170">-Kg
+          </td>
+          <td class="right">
+            <input type="text" id="tareDateTime" class="bill-input medium"
+                   value="26-04-2025-10:36:37 AM">
+          </td>
+      </tr>
+    </table>
+
+    <!-- FOOTER DIVIDER -->
+    <div class="footer-divider"></div>
+
+    <!-- NET WEIGHT -->
+    <table class="details">
+      <tr>
+        <td class="left">
+          Net Weight :- 
+          <input type="number" id="netWeight" class="bill-input small" readonly value="4090">-Kg
+        </td>
+        <td class="right"></td>
+      </tr>
+    </table>
+
+    <!-- SIGNATORY -->
+    <div class="signatory">Authorized Signator</div>
+  </div>
+
+  <button id="downloadPdfBtn">Download as PDF</button>
+
+  <!-- html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script>
+    // auto-recalculate net weight
+    const grossField = document.getElementById('grossWeight');
+    const tareField  = document.getElementById('tareWeight');
+    const netField   = document.getElementById('netWeight');
+
+    function updateNet() {
+      const gross = parseFloat(grossField.value) || 0;
+      const tare  = parseFloat(tareField.value)  || 0;
+      netField.value = gross - tare;
+    }
+    grossField.addEventListener('input', updateNet);
+    tareField.addEventListener('input', updateNet);
+
+    // PDF download
+    document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+      html2pdf().set({
+        margin:       [0.5, 0.5],
+        filename:     'bill.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
+      }).from(document.getElementById('billContent')).save();
+    });
+  </script>
+
+</body>
+</html>

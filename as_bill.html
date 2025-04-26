@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice - A S Blue Metals</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      font-size: 14px;
+    }
+    
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 6px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .no-border {
+      border: none;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .invoice-header {
+      width: 100%;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .company-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .company-address {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .invoice-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 10px 30px;
+      text-align: left;
+    }
+
+    .left-column,
+    .center-column,
+    .right-column {
+      width: 30%;
+      font-size: 14px;
+    }
+
+    .center-column {
+      text-align: center;
+    }
+
+    .invoice-footer {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      margin: 10px 30px;
+      font-size: 14px;
+      float: left;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="invoice-header">
+    <h2 class="company-title">A S BLUE METALS</h2>
+    <div class="company-address">
+      1419, MAIN ROAD, KOTHANKULAM, IRUKKANTHURAI, TIRUNELVELI - 627106<br>
+      TEL: 9489675500, 7539934700
+    </div>
+
+    <div class="invoice-grid">
+      <div class="left-column">
+        <div><strong>STIN: 33AAKPN5383R12W</strong></div>
+        <div><strong>N: 33266423024</strong></div>
+      </div>
+
+      <div class="center-column">
+        <div>Application for Electronic <b>Referance</b> Number of an invoice</div>
+        <div>From GST INV-1</div>
+        <div>CASH</div>
+      </div>
+
+      <div class="right-column">
+        <div><strong>Vehicle: <span contenteditable="true">TN74L 2927</span></strong></div>
+        <div><strong>Date & Time: <span contenteditable="true">25/04/2025 01:36PM</span></strong></div>
+        <div><strong>Place of Supply: <span contenteditable="true">SANGANAPURAM</span></strong></div>
+      </div>
+      </div>
+      
+      <div class="invoice-grid">
+        <div class="left-column">
+          <div><strong>Invoice No: <span contenteditable="true">BU/123</span></strong></div>
+          <div><strong>Invoice Date: <span contenteditable="true">25/04/2025</span></strong></div>
+        </div>
+      </div>
+      
+
+  <br>
+
+  <!-- Inside your <body> -->
+<table>
+    <!-- Billing & Shipping -->
+    <tr>
+      <th colspan="6" contenteditable="true">Details of Receiver (Billed to)</th>
+      <th colspan="7" contenteditable="true">Details of Consignee (Shipped to)</th>
+    </tr>
+    <tr>
+      <td colspan="6" class="text-left" contenteditable="true">
+        Name and Address<br><br>
+        GSTIN
+      </td>
+      <td colspan="7" class="text-left" contenteditable="true">
+        Name and Address<br><br>
+        GSTIN
+      </td>
+    </tr>
+  
+    <!-- Headings -->
+    <tr>
+      <th rowspan="2">Sl. No.</th>
+      <th rowspan="2" contenteditable="true">Description Good<br>and HSN Code</th>
+      <th rowspan="2" contenteditable="true">Qty</th>
+      <th rowspan="2" contenteditable="true">Rate</th>
+      <th rowspan="2" contenteditable="true">Total Amount</th>
+      <th rowspan="2" contenteditable="true">Discount</th>
+      <th rowspan="2" contenteditable="true">Taxable Value</th>
+      <th colspan="2">CGST</th>
+      <th colspan="2">SGST</th>
+      <th colspan="2">IGST</th>
+    </tr>
+    <tr>
+      <th>Rate</th>
+      <th>Amt</th>
+      <th>Rate</th>
+      <th>Amt</th>
+      <th>Rate</th>
+      <th>Amt</th>
+    </tr>
+  
+    <!-- Row 1 -->
+    <tr>
+      <td contenteditable="true">1</td>
+      <td class="text-left" id="product-table" contenteditable="true">
+        DUST <br><small>25171010</small>
+      </td>
+      <td contenteditable="true">6.420</td>
+      <td contenteditable="true">810.00</td>
+      <td contenteditable="true">4479.30</td>
+      <td contenteditable="true">3.00</td>
+      <td contenteditable="true">4476.30</td>
+      <td contenteditable="true">2.50</td>
+      <td contenteditable="true">121.91</td>
+      <td contenteditable="true">2.50</td>
+      <td contenteditable="true">121.91</td>
+      <td contenteditable="true">0.00</td>
+      <td contenteditable="true">0.00</td>
+    </tr>
+  
+    <!-- Row 2 -->
+    <tr>
+      <td contenteditable="true" >2</td>
+      <td class="text-left" contenteditable="true">Lorry Rent</td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true">0.00</td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true">0.00</td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true"></td>
+    </tr>
+  
+    <!-- Total -->
+    <tr>
+      <td colspan="7" class="text-left bold" contenteditable="true">Total</td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true">121.91</td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true">121.91</td>
+      <td contenteditable="true"></td>
+      <td contenteditable="true">0.00</td>
+    </tr>
+  
+    <!-- Invoice Values -->
+    <tr>
+        <td colspan="13" class="text-left" contenteditable="false">
+            Invoice Value (In words): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="invoice-words">Rupee Five Thousand Three Hundred And Eighty Eight Only</span>
+            <br><br>
+            Invoice Value (In Figure):
+            <input type="number" 
+                   id="invoice-figure" 
+                   value="5388.00" 
+                   oninput="updateWords()" 
+                   style="float: right; width: 120px; border: none; outline: none; background: transparent; font-size: 14px; text-align: right;" />
+          </td>
+          
+    </tr>
+  </table>
+  <br>
+
+  <div style="text-align: left;">
+    E &amp; O E
+    &nbsp; Tare weight: <strong>3100.00</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Load weight: <strong id="load-weight">0.00</strong>
+  </div>
+  
+  
+
+  <!-- Signatory -->
+  <p class="footer">Authorised Signatory</p>
+
+  <button class="download-btn" onclick="downloadPDF()">Download as PDF</button>
+
+  <script>
+    async function downloadPDF() {
+      // Hide the download button before generating the PDF
+      const downloadButton = document.querySelector('.download-btn');
+      downloadButton.style.display = 'none';
+  
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'pt', 'a4');
+      const invoice = document.body;
+  
+      await html2canvas(invoice).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        const imgProps = doc.getImageProperties(imgData);
+        const pdfWidth = doc.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        doc.save("Invoice_BU123.pdf");
+  
+        // Show the button back after the PDF is downloaded
+        downloadButton.style.display = 'inline-block';
+      });
+    }
+
+    const tareWeight = 3100.00; // Fixed tare weight
+
+function updateLoadWeight() {
+  let totalQty = 0;
+
+  document.querySelectorAll('table tr').forEach(row => {
+    const cells = row.querySelectorAll('td');
+    
+    if (cells.length > 2) { 
+      const descriptionCell = cells[1]; 
+      const qtyCell = cells[2];
+
+      if (descriptionCell && qtyCell) {
+        let description = descriptionCell.innerText.trim();
+        let qtyText = qtyCell.innerText.trim();
+
+        if (description && qtyText !== '') {
+          let qtyNumber = parseFloat(qtyText);
+          if (!isNaN(qtyNumber)) {
+            totalQty += Math.round(qtyNumber * 1000);
+          }
+        }
+      }
+    }
+  });
+
+  const finalLoadWeight = tareWeight + totalQty;
+  document.getElementById('load-weight').innerText = finalLoadWeight.toFixed(2);
+}
+
+function updateWords() {
+  const number = document.getElementById('invoice-figure').value;
+  if (number.includes('.')) {
+    const [whole] = number.split('.');
+    document.getElementById('invoice-words').innerText = "Rupee " + numberToWords(parseInt(whole)) + " Only";
+  } else {
+    document.getElementById('invoice-words').innerText = "Rupee " + numberToWords(parseInt(number)) + " Only";
+  }
+}
+
+// Simple Number to Words for Rupees
+function numberToWords(num) {
+  if (!num) return '';
+
+  const a = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
+             'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen',
+             'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  const b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+  function inWords(n) {
+    if (n < 20) return a[n];
+    if (n < 100) return b[Math.floor(n / 10)] + (n % 10 ? " " + a[n % 10] : "");
+    if (n < 1000) return a[Math.floor(n / 100)] + " Hundred" + (n % 100 ? " and " + inWords(n % 100) : "");
+    if (n < 100000) return inWords(Math.floor(n / 1000)) + " Thousand" + (n % 1000 ? " " + inWords(n % 1000) : "");
+    if (n < 10000000) return inWords(Math.floor(n / 100000)) + " Lakh" + (n % 100000 ? " " + inWords(n % 100000) : "");
+    return inWords(Math.floor(n / 10000000)) + " Crore" + (n % 10000000 ? " " + inWords(n % 10000000) : "");
+  }
+
+  return inWords(num);
+}
+
+// Auto update load weight if any changes
+document.addEventListener('input', function (event) {
+  if (event.target.closest('table')) {
+    updateLoadWeight();
+  }
+});
+
+
+  </script>
+  
+</body>
+</html>

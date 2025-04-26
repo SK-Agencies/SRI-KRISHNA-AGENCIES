@@ -159,3 +159,30 @@ button:hover {
         padding: 10px; /* Maintain consistent input and button size */
     }
 }
+
+.topnav {
+    overflow: hidden;
+    background-color: #5c6b62;
+    border-radius: 25px;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #fffb7b;
+    color: black;
+    border-radius: 25px;
+  }
+  
+  .topnav a.active {
+    background-color: #0080ff;
+    color: white;
+    border-radius: 25px;
+  }
